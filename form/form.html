@@ -1,0 +1,78 @@
+<html>
+
+<body>
+    <form id="course_form" onsubmit="return validateForm()">
+        <h1>Course Registration</h1>
+        <!-- Name -->
+        <label for="name">Enter name:</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <!-- Age -->
+        <label for="age">Enter age:</label>
+        <input type="number" name="age" id="age" min="18" step="1">
+        <br>
+        <!-- Email -->
+        <label for="email">Enter email:</label>
+        <input type="email" name="email" id="email">
+        <br>
+        <!-- Address -->
+        <label for="addr">Enter address:</label>
+        <textarea name="addr" id="addr" cols="30" rows="10"></textarea>
+        <br>
+        <!-- Gender -->
+        <label for="gender">Gender</label>
+        <input type="radio" name="gender" id="male" value="M"> <label for="male">Male</label>
+        <input type="radio" name="gender" id="female" value="F"> <label for="female">Female</label>
+        <input type="radio" name="gender" id="other" value="O"> <label for="other">Other</label>
+        <br>
+        <!-- city -->
+        <label for="city">Enter your city:</label>
+        <input type="text" name="city" id="city">
+        <br>
+        <!-- Hobby -->
+        <label for="hobby">What are your hobbies?</label>
+        <input type="text" name="hobby" id="hobby">
+        <br>
+
+        <!-- ------ -->
+        <!-- For q20 -->
+        <!-- Password: Set input type="password" -->
+        <label for="pass">Enter password:</label>
+        <input type="password" name="pass" id="pass">
+        <br>
+
+        <!-- DOB: type date -->
+        <label for="dob">Enter DOB:</label>
+        <input type="date" name="dob" id="dob">
+        <br>
+
+
+        <!-- Submit -->
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+<script>
+    // Validate form
+    function validateForm() {
+        var course_form = document.getElementById('course_form');
+        if (course_form.name.value == "" ||
+            course_form.age.value == "" ||
+            course_form.email.value == "" ||
+            course_form.addr.value == "" ||
+            course_form.gender.value == "" ||
+            course_form.city.value == "") {
+            alert("You must fill all the fields");
+            return false;
+        }
+
+        if (course_form.age.value < 18 || course_form.age.value > 60) {
+            alert("Your age must be between 18 and 60");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Price Index</title>
+    <link rel="icon" href="dollar.ico">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('form').onsubmit = function() {
+
+            // Send a GET request to the URL
+            fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
+            // Put response into json form
+            .then(response => response.json())
+            .then(data => {
+                // Get currency from user input and convert to upper case
+                const currency = document.querySelector('#currency').value.toUpperCase();
+
+                // Get rate from data
+                const rate = data.bpi[currency].rate;
+
+                // Check if currency is valid:
+                if (rate !== undefined) {
+                    // Display exchange on the screen
+                    document.querySelector('#result').innerHTML = `1 Bitcoin is equal to ${rate} ${currency}.`;
+                } else {
+                    // Display error on the screen
+                    document.querySelector('#result').innerHTML = 'Invalid Currency.';
+                }
+            })
+            // Catch any errors and log them to the console
+            .catch(error => {
+                console.log('Error:', error);
+            });
+            // Prevent default submission
+            return false;
+        }
+    });
+    </script>
+</head>
+<body>
+    <form>
+        <input id="currency" placeholder="Currency" type="text">
+        <input type="submit" value="Convert">
+    </form>
+
+    <div id="result">
+
+    </div>
+    
+</body>
+</html>

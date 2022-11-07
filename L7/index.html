@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <style>
+    .p-3 {
+      width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+    }
+  </style>
+  <body>
+    <h1 align="center">Java Script Validation Form</h1>
+    <div class="p-3">
+      <form
+        name="myform"
+        id="myform"
+        method="post"
+        action="http://www.javatpoint.com/javascriptpages/valid.jsp"
+        onsubmit="return validateform()"
+      >
+        Name: <input type="text" name="name" /><br />
+        <br />
+        Password: <input type="password" name="password" /><br />
+
+        <br />
+
+        <div>
+          <label for="myform_date">Enter Date Of Registration:</label>
+          <input type="text" id="myform_date" name="the_date" />
+          <div class="error hidden" id="date_error">
+            Please enter a valid date format: MM/DD/YYYY
+          </div>
+        </div>
+        <div class="mt-3">
+          <br />
+          <br />
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
